@@ -41,7 +41,7 @@ namespace Serial_port
             this.cBoxDataBits = new System.Windows.Forms.ComboBox();
             this.cBoxBaundRate = new System.Windows.Forms.ComboBox();
             this.cBoxComPort = new System.Windows.Forms.ComboBox();
-            this.btnOpen = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.btnSendData = new System.Windows.Forms.Button();
@@ -133,17 +133,14 @@ namespace Serial_port
             // 
             this.cBoxParity.FormattingEnabled = true;
             this.cBoxParity.Items.AddRange(new object[] {
-            "Чет",
-            "Нечет",
-            "Нет",
-            "Маркер",
-            "Пробел",
-            "\t"});
+            "None",
+            "Odd",
+            "Even"});
             this.cBoxParity.Location = new System.Drawing.Point(133, 102);
             this.cBoxParity.Name = "cBoxParity";
             this.cBoxParity.Size = new System.Drawing.Size(120, 21);
             this.cBoxParity.TabIndex = 3;
-            this.cBoxParity.Text = "Нет";
+            this.cBoxParity.SelectedIndexChanged += new System.EventHandler(this.cBoxParity_SelectedIndexChanged);
             // 
             // cBoxDataBits
             // 
@@ -190,18 +187,17 @@ namespace Serial_port
             this.cBoxComPort.Name = "cBoxComPort";
             this.cBoxComPort.Size = new System.Drawing.Size(120, 21);
             this.cBoxComPort.TabIndex = 0;
-            this.cBoxComPort.Text = "COM3";
             this.cBoxComPort.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
-            // btnOpen
+            // button1
             // 
-            this.btnOpen.Location = new System.Drawing.Point(14, 206);
-            this.btnOpen.Name = "btnOpen";
-            this.btnOpen.Size = new System.Drawing.Size(130, 25);
-            this.btnOpen.TabIndex = 1;
-            this.btnOpen.Text = "Открыть";
-            this.btnOpen.UseVisualStyleBackColor = true;
-            this.btnOpen.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Location = new System.Drawing.Point(14, 206);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(130, 25);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Открыть";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnClose
             // 
@@ -211,6 +207,7 @@ namespace Serial_port
             this.btnClose.TabIndex = 2;
             this.btnClose.Text = "Закрыть";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // progressBar
             // 
@@ -225,8 +222,9 @@ namespace Serial_port
             this.btnSendData.Name = "btnSendData";
             this.btnSendData.Size = new System.Drawing.Size(268, 25);
             this.btnSendData.TabIndex = 4;
-            this.btnSendData.Text = "Отправить данные";
+            this.btnSendData.Text = "Получить данные";
             this.btnSendData.UseVisualStyleBackColor = true;
+            this.btnSendData.Click += new System.EventHandler(this.btnSendData_Click);
             // 
             // textBox1
             // 
@@ -238,6 +236,10 @@ namespace Serial_port
             this.textBox1.TabIndex = 5;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
+            // serial_port1
+            // 
+            this.serial_port1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serial_port1_DataReceived);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -247,10 +249,11 @@ namespace Serial_port
             this.Controls.Add(this.btnSendData);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.btnOpen);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "C# COM PORT";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -271,7 +274,7 @@ namespace Serial_port
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnOpen;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.Button btnSendData;
