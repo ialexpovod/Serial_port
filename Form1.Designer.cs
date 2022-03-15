@@ -56,36 +56,36 @@ namespace Serial_port
             this.labNumLength = new System.Windows.Forms.Label();
             this.labLengthData = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.cBoxWrite = new System.Windows.Forms.CheckBox();
+            this.gBoxWrite = new System.Windows.Forms.GroupBox();
             this.cBoxWriteLine = new System.Windows.Forms.CheckBox();
-            this.cBoxUsingEnter = new System.Windows.Forms.CheckBox();
+            this.cBoxWrite = new System.Windows.Forms.CheckBox();
+            this.gBoxButEnt = new System.Windows.Forms.GroupBox();
             this.cBoxUsingButton = new System.Windows.Forms.CheckBox();
+            this.cBoxUsingEnter = new System.Windows.Forms.CheckBox();
             this.btnClear = new System.Windows.Forms.Button();
             this.gBoxConnect = new System.Windows.Forms.GroupBox();
-            this.gBoxButEnt = new System.Windows.Forms.GroupBox();
-            this.gBoxWrite = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.tBoxReciver = new System.Windows.Forms.TextBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.lvalLengthOUTdata = new System.Windows.Forms.Label();
+            this.lLengthOUTdata = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.cBoxUpdate = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.cBoxAddtoOldDist = new System.Windows.Forms.CheckBox();
+            this.btnClearOutData = new System.Windows.Forms.Button();
+            this.tBoxReciver = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.gBoxStatus.SuspendLayout();
             this.gBoxTransmitter.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.gBoxConnect.SuspendLayout();
-            this.gBoxButEnt.SuspendLayout();
             this.gBoxWrite.SuspendLayout();
+            this.gBoxButEnt.SuspendLayout();
+            this.gBoxConnect.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox7.SuspendLayout();
-            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -348,20 +348,21 @@ namespace Serial_port
             // labNumLength
             // 
             this.labNumLength.AutoSize = true;
-            this.labNumLength.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labNumLength.Location = new System.Drawing.Point(178, 16);
+            this.labNumLength.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labNumLength.Location = new System.Drawing.Point(173, 19);
             this.labNumLength.Name = "labNumLength";
-            this.labNumLength.Size = new System.Drawing.Size(29, 20);
+            this.labNumLength.Size = new System.Drawing.Size(24, 16);
             this.labNumLength.TabIndex = 1;
             this.labNumLength.Text = "00";
+            this.labNumLength.Click += new System.EventHandler(this.labNumLength_Click);
             // 
             // labLengthData
             // 
             this.labLengthData.AutoSize = true;
-            this.labLengthData.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labLengthData.Location = new System.Drawing.Point(41, 16);
+            this.labLengthData.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labLengthData.Location = new System.Drawing.Point(6, 19);
             this.labLengthData.Name = "labLengthData";
-            this.labLengthData.Size = new System.Drawing.Size(196, 20);
+            this.labLengthData.Size = new System.Drawing.Size(167, 16);
             this.labLengthData.TabIndex = 0;
             this.labLengthData.Text = "Размер входных данных:";
             // 
@@ -377,16 +378,15 @@ namespace Serial_port
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             // 
-            // cBoxWrite
+            // gBoxWrite
             // 
-            this.cBoxWrite.AutoSize = true;
-            this.cBoxWrite.Location = new System.Drawing.Point(6, 36);
-            this.cBoxWrite.Name = "cBoxWrite";
-            this.cBoxWrite.Size = new System.Drawing.Size(51, 17);
-            this.cBoxWrite.TabIndex = 9;
-            this.cBoxWrite.Text = "Write";
-            this.cBoxWrite.UseVisualStyleBackColor = true;
-            this.cBoxWrite.CheckedChanged += new System.EventHandler(this.cBoxWrite_CheckedChanged);
+            this.gBoxWrite.Controls.Add(this.cBoxWriteLine);
+            this.gBoxWrite.Controls.Add(this.cBoxWrite);
+            this.gBoxWrite.Location = new System.Drawing.Point(176, 15);
+            this.gBoxWrite.Name = "gBoxWrite";
+            this.gBoxWrite.Size = new System.Drawing.Size(81, 59);
+            this.gBoxWrite.TabIndex = 11;
+            this.gBoxWrite.TabStop = false;
             // 
             // cBoxWriteLine
             // 
@@ -399,16 +399,26 @@ namespace Serial_port
             this.cBoxWriteLine.UseVisualStyleBackColor = true;
             this.cBoxWriteLine.CheckedChanged += new System.EventHandler(this.cBoxWriteLine_CheckedChanged);
             // 
-            // cBoxUsingEnter
+            // cBoxWrite
             // 
-            this.cBoxUsingEnter.AutoSize = true;
-            this.cBoxUsingEnter.Location = new System.Drawing.Point(6, 36);
-            this.cBoxUsingEnter.Name = "cBoxUsingEnter";
-            this.cBoxUsingEnter.Size = new System.Drawing.Size(51, 17);
-            this.cBoxUsingEnter.TabIndex = 7;
-            this.cBoxUsingEnter.Text = "Enter";
-            this.cBoxUsingEnter.UseVisualStyleBackColor = true;
-            this.cBoxUsingEnter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cBoxUsingEnter_KeyDown_1);
+            this.cBoxWrite.AutoSize = true;
+            this.cBoxWrite.Location = new System.Drawing.Point(6, 36);
+            this.cBoxWrite.Name = "cBoxWrite";
+            this.cBoxWrite.Size = new System.Drawing.Size(51, 17);
+            this.cBoxWrite.TabIndex = 9;
+            this.cBoxWrite.Text = "Write";
+            this.cBoxWrite.UseVisualStyleBackColor = true;
+            this.cBoxWrite.CheckedChanged += new System.EventHandler(this.cBoxWrite_CheckedChanged);
+            // 
+            // gBoxButEnt
+            // 
+            this.gBoxButEnt.Controls.Add(this.cBoxUsingButton);
+            this.gBoxButEnt.Controls.Add(this.cBoxUsingEnter);
+            this.gBoxButEnt.Location = new System.Drawing.Point(98, 15);
+            this.gBoxButEnt.Name = "gBoxButEnt";
+            this.gBoxButEnt.Size = new System.Drawing.Size(72, 59);
+            this.gBoxButEnt.TabIndex = 10;
+            this.gBoxButEnt.TabStop = false;
             // 
             // cBoxUsingButton
             // 
@@ -420,6 +430,17 @@ namespace Serial_port
             this.cBoxUsingButton.Text = "Button";
             this.cBoxUsingButton.UseVisualStyleBackColor = true;
             this.cBoxUsingButton.CheckedChanged += new System.EventHandler(this.cBoxUsingButton_CheckedChanged);
+            // 
+            // cBoxUsingEnter
+            // 
+            this.cBoxUsingEnter.AutoSize = true;
+            this.cBoxUsingEnter.Location = new System.Drawing.Point(6, 36);
+            this.cBoxUsingEnter.Name = "cBoxUsingEnter";
+            this.cBoxUsingEnter.Size = new System.Drawing.Size(51, 17);
+            this.cBoxUsingEnter.TabIndex = 7;
+            this.cBoxUsingEnter.Text = "Enter";
+            this.cBoxUsingEnter.UseVisualStyleBackColor = true;
+            this.cBoxUsingEnter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cBoxUsingEnter_KeyDown_1);
             // 
             // btnClear
             // 
@@ -443,26 +464,6 @@ namespace Serial_port
             this.gBoxConnect.TabIndex = 8;
             this.gBoxConnect.TabStop = false;
             // 
-            // gBoxButEnt
-            // 
-            this.gBoxButEnt.Controls.Add(this.cBoxUsingButton);
-            this.gBoxButEnt.Controls.Add(this.cBoxUsingEnter);
-            this.gBoxButEnt.Location = new System.Drawing.Point(98, 15);
-            this.gBoxButEnt.Name = "gBoxButEnt";
-            this.gBoxButEnt.Size = new System.Drawing.Size(72, 59);
-            this.gBoxButEnt.TabIndex = 10;
-            this.gBoxButEnt.TabStop = false;
-            // 
-            // gBoxWrite
-            // 
-            this.gBoxWrite.Controls.Add(this.cBoxWriteLine);
-            this.gBoxWrite.Controls.Add(this.cBoxWrite);
-            this.gBoxWrite.Location = new System.Drawing.Point(176, 15);
-            this.gBoxWrite.Name = "gBoxWrite";
-            this.gBoxWrite.Size = new System.Drawing.Size(81, 59);
-            this.gBoxWrite.TabIndex = 11;
-            this.gBoxWrite.TabStop = false;
-            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.groupBox6);
@@ -475,19 +476,41 @@ namespace Serial_port
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Чтение";
             // 
-            // tBoxReciver
+            // groupBox6
             // 
-            this.tBoxReciver.BackColor = System.Drawing.SystemColors.Window;
-            this.tBoxReciver.Location = new System.Drawing.Point(6, 21);
-            this.tBoxReciver.Multiline = true;
-            this.tBoxReciver.Name = "tBoxReciver";
-            this.tBoxReciver.Size = new System.Drawing.Size(263, 129);
-            this.tBoxReciver.TabIndex = 8;
+            this.groupBox6.Controls.Add(this.lvalLengthOUTdata);
+            this.groupBox6.Controls.Add(this.lLengthOUTdata);
+            this.groupBox6.Location = new System.Drawing.Point(12, 244);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(250, 44);
+            this.groupBox6.TabIndex = 8;
+            this.groupBox6.TabStop = false;
+            // 
+            // lvalLengthOUTdata
+            // 
+            this.lvalLengthOUTdata.AutoSize = true;
+            this.lvalLengthOUTdata.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lvalLengthOUTdata.Location = new System.Drawing.Point(187, 18);
+            this.lvalLengthOUTdata.Name = "lvalLengthOUTdata";
+            this.lvalLengthOUTdata.Size = new System.Drawing.Size(24, 16);
+            this.lvalLengthOUTdata.TabIndex = 1;
+            this.lvalLengthOUTdata.Text = "00";
+            this.lvalLengthOUTdata.Click += new System.EventHandler(this.lvalLengthOUTdata_Click);
+            // 
+            // lLengthOUTdata
+            // 
+            this.lLengthOUTdata.AutoSize = true;
+            this.lLengthOUTdata.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lLengthOUTdata.Location = new System.Drawing.Point(15, 18);
+            this.lLengthOUTdata.Name = "lLengthOUTdata";
+            this.lLengthOUTdata.Size = new System.Drawing.Size(176, 16);
+            this.lLengthOUTdata.TabIndex = 0;
+            this.lLengthOUTdata.Text = "Размер выходных данных:";
             // 
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.groupBox7);
-            this.groupBox5.Controls.Add(this.button2);
+            this.groupBox5.Controls.Add(this.btnClearOutData);
             this.groupBox5.Location = new System.Drawing.Point(6, 156);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(263, 82);
@@ -497,7 +520,7 @@ namespace Serial_port
             // groupBox7
             // 
             this.groupBox7.Controls.Add(this.cBoxUpdate);
-            this.groupBox7.Controls.Add(this.checkBox4);
+            this.groupBox7.Controls.Add(this.cBoxAddtoOldDist);
             this.groupBox7.Location = new System.Drawing.Point(125, 15);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(107, 59);
@@ -513,55 +536,38 @@ namespace Serial_port
             this.cBoxUpdate.TabIndex = 6;
             this.cBoxUpdate.Text = "Update";
             this.cBoxUpdate.UseVisualStyleBackColor = true;
+            this.cBoxUpdate.CheckedChanged += new System.EventHandler(this.cBoxUpdate_CheckedChanged);
             // 
-            // checkBox4
+            // cBoxAddtoOldDist
             // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(6, 36);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(95, 17);
-            this.checkBox4.TabIndex = 7;
-            this.checkBox4.Text = "Add to old Dist";
-            this.checkBox4.UseVisualStyleBackColor = true;
+            this.cBoxAddtoOldDist.AutoSize = true;
+            this.cBoxAddtoOldDist.Location = new System.Drawing.Point(6, 36);
+            this.cBoxAddtoOldDist.Name = "cBoxAddtoOldDist";
+            this.cBoxAddtoOldDist.Size = new System.Drawing.Size(95, 17);
+            this.cBoxAddtoOldDist.TabIndex = 7;
+            this.cBoxAddtoOldDist.Text = "Add to old Dist";
+            this.cBoxAddtoOldDist.UseVisualStyleBackColor = true;
+            this.cBoxAddtoOldDist.CheckedChanged += new System.EventHandler(this.cBoxAddtoOldDist_CheckedChanged);
             // 
-            // button2
+            // btnClearOutData
             // 
-            this.button2.Location = new System.Drawing.Point(35, 19);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(84, 55);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Очистить";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnClearOutData.Location = new System.Drawing.Point(35, 19);
+            this.btnClearOutData.Name = "btnClearOutData";
+            this.btnClearOutData.Size = new System.Drawing.Size(84, 55);
+            this.btnClearOutData.TabIndex = 5;
+            this.btnClearOutData.Text = "Очистить";
+            this.btnClearOutData.UseVisualStyleBackColor = true;
+            this.btnClearOutData.Click += new System.EventHandler(this.btnClearOutData_Click);
             // 
-            // groupBox6
+            // tBoxReciver
             // 
-            this.groupBox6.Controls.Add(this.label6);
-            this.groupBox6.Controls.Add(this.label7);
-            this.groupBox6.Location = new System.Drawing.Point(12, 244);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(250, 44);
-            this.groupBox6.TabIndex = 8;
-            this.groupBox6.TabStop = false;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.Location = new System.Drawing.Point(178, 16);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(29, 20);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "00";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label7.Location = new System.Drawing.Point(41, 16);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(129, 20);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "Размер данных:";
+            this.tBoxReciver.BackColor = System.Drawing.SystemColors.Window;
+            this.tBoxReciver.Location = new System.Drawing.Point(6, 21);
+            this.tBoxReciver.Multiline = true;
+            this.tBoxReciver.Name = "tBoxReciver";
+            this.tBoxReciver.Size = new System.Drawing.Size(263, 129);
+            this.tBoxReciver.TabIndex = 8;
+            this.tBoxReciver.TextChanged += new System.EventHandler(this.tBoxReciver_TextChanged);
             // 
             // Form1
             // 
@@ -584,18 +590,18 @@ namespace Serial_port
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
-            this.gBoxConnect.ResumeLayout(false);
-            this.gBoxButEnt.ResumeLayout(false);
-            this.gBoxButEnt.PerformLayout();
             this.gBoxWrite.ResumeLayout(false);
             this.gBoxWrite.PerformLayout();
+            this.gBoxButEnt.ResumeLayout(false);
+            this.gBoxButEnt.PerformLayout();
+            this.gBoxConnect.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -641,11 +647,11 @@ namespace Serial_port
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.CheckBox cBoxUpdate;
-        private System.Windows.Forms.CheckBox checkBox4;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.CheckBox cBoxAddtoOldDist;
+        private System.Windows.Forms.Button btnClearOutData;
         private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lvalLengthOUTdata;
+        private System.Windows.Forms.Label lLengthOUTdata;
     }
 }
 

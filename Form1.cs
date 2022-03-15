@@ -43,6 +43,9 @@ namespace Serial_port
             cBoxWrite.Checked = true;
             cBoxWriteLine.Checked = false;
             SendWrite = "Write";
+
+            cBoxUpdate.Checked = false;
+            cBoxAddtoOldDist.Checked = true;
         }
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -137,17 +140,7 @@ namespace Serial_port
 
         }
 
-        private void serial_port1_DataReceived(object sender, SerialDataReceivedEventArgs e)
-        {
-            dataIN = serial_port1.ReadExisting();
-            this.Invoke(new EventHandler(Showdata));
-        }
-
-        private void Showdata(object sender, EventArgs e)
-        {
-            textBox1.Text = dataIN;
-        }
-
+      
         private void progressBar_Click(object sender, EventArgs e)
         {
 
@@ -158,6 +151,7 @@ namespace Serial_port
             if (cBoxDTR.Checked)
             {
                 serial_port1.DtrEnable = true;
+                MessageBox.Show("DTR Enable", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             }
             else
@@ -171,7 +165,7 @@ namespace Serial_port
             if (cBoxRTS.Checked)
             {
                 serial_port1.RtsEnable = true;
-
+                MessageBox.Show("DTR Enable", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
@@ -247,6 +241,74 @@ namespace Serial_port
 
                 }
             }
+        }
+        private void serial_port1_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            dataIN = serial_port1.ReadExisting();
+            this.Invoke(new EventHandler(Showdata));
+        }
+
+        private void Showdata(object sender, EventArgs e)
+        {
+            int dataInLength = tBoxReciver.TextLength;
+            lvalLengthOUTdata.Text = string.Format("{0:0}", dataInLength);
+            if (cBoxUpdate.Checked)
+            {
+                tBoxReciver.Text = dataIN;
+            }
+            else if (cBoxAddtoOldDist.Checked)
+                {
+                tBoxReciver.Text += dataIN;
+            }
+        }
+
+
+        private void labNumLength_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cBoxUpdate_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cBoxUpdate.Checked)
+            {
+                cBoxUpdate.Checked = true;
+                cBoxAddtoOldDist.Checked = false;
+            }
+            else {
+                cBoxAddtoOldDist.Checked = true;
+            }
+        }
+
+        private void cBoxAddtoOldDist_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cBoxAddtoOldDist.Checked)
+            {
+                cBoxUpdate.Checked = false;
+                cBoxAddtoOldDist.Checked = true;
+            }
+            else
+            {
+                cBoxUpdate.Checked = true;
+            }
+        }
+
+        private void btnClearOutData_Click(object sender, EventArgs e)
+        {
+            if(tBoxReciver.Text != "")
+            {
+                tBoxReciver.Text = "";
+            }
+        }
+
+        private void lvalLengthOUTdata_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tBoxReciver_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
