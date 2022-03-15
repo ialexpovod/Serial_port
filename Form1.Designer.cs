@@ -43,49 +43,49 @@ namespace Serial_port
             this.cBoxDataBits = new System.Windows.Forms.ComboBox();
             this.cBoxBaundRate = new System.Windows.Forms.ComboBox();
             this.cBoxComPort = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btnClose = new System.Windows.Forms.Button();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.btnSendData = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.serial_port1 = new System.IO.Ports.SerialPort(this.components);
-            this.gBoxStatus = new System.Windows.Forms.GroupBox();
             this.lStatusConnect = new System.Windows.Forms.Label();
-            this.gBoxTransmitter = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.labNumLength = new System.Windows.Forms.Label();
             this.labLengthData = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.gBoxWrite = new System.Windows.Forms.GroupBox();
-            this.cBoxWriteLine = new System.Windows.Forms.CheckBox();
-            this.cBoxWrite = new System.Windows.Forms.CheckBox();
-            this.gBoxButEnt = new System.Windows.Forms.GroupBox();
-            this.cBoxUsingButton = new System.Windows.Forms.CheckBox();
-            this.cBoxUsingEnter = new System.Windows.Forms.CheckBox();
-            this.btnClear = new System.Windows.Forms.Button();
-            this.gBoxConnect = new System.Windows.Forms.GroupBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.tBoxReciver = new System.Windows.Forms.TextBox();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cOMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.открытьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.закрытьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.получениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.отправитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.очиститьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.строкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripComboBox2 = new System.Windows.Forms.ToolStripComboBox();
+            this.получениеToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.данныеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
+            this.очиститьToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.позицияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripComboBox3 = new System.Windows.Forms.ToolStripComboBox();
+            this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gBoxDisplay = new System.Windows.Forms.GroupBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.lvalLengthOUTdata = new System.Windows.Forms.Label();
             this.lLengthOUTdata = new System.Windows.Forms.Label();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.cBoxUpdate = new System.Windows.Forms.CheckBox();
-            this.cBoxAddtoOldDist = new System.Windows.Forms.CheckBox();
-            this.btnClearOutData = new System.Windows.Forms.Button();
-            this.tBoxReciver = new System.Windows.Forms.TextBox();
+            this.MainPanel = new System.Windows.Forms.Panel();
+            this.ButtonPanel = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox1.SuspendLayout();
-            this.gBoxStatus.SuspendLayout();
-            this.gBoxTransmitter.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.gBoxWrite.SuspendLayout();
-            this.gBoxButEnt.SuspendLayout();
-            this.gBoxConnect.SuspendLayout();
-            this.groupBox4.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
+            this.gBoxDisplay.SuspendLayout();
             this.groupBox6.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            this.groupBox7.SuspendLayout();
+            this.MainPanel.SuspendLayout();
+            this.ButtonPanel.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -102,12 +102,12 @@ namespace Serial_port
             this.groupBox1.Controls.Add(this.cBoxDataBits);
             this.groupBox1.Controls.Add(this.cBoxBaundRate);
             this.groupBox1.Controls.Add(this.cBoxComPort);
-            this.groupBox1.Location = new System.Drawing.Point(12, 28);
+            this.groupBox1.Location = new System.Drawing.Point(12, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(268, 202);
+            this.groupBox1.Size = new System.Drawing.Size(277, 202);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "COM PORT";
+            this.groupBox1.Text = "Контрольная панель";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // cBoxRTS
@@ -202,6 +202,7 @@ namespace Serial_port
             this.cBoxParity.Name = "cBoxParity";
             this.cBoxParity.Size = new System.Drawing.Size(120, 21);
             this.cBoxParity.TabIndex = 3;
+            this.cBoxParity.Text = "None";
             this.cBoxParity.SelectedIndexChanged += new System.EventHandler(this.cBoxParity_SelectedIndexChanged);
             // 
             // cBoxDataBits
@@ -251,39 +252,20 @@ namespace Serial_port
             this.cBoxComPort.TabIndex = 0;
             this.cBoxComPort.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(6, 19);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(127, 40);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Открыть";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // btnClose
-            // 
-            this.btnClose.Location = new System.Drawing.Point(6, 65);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(127, 40);
-            this.btnClose.TabIndex = 2;
-            this.btnClose.Text = "Закрыть";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
             // progressBar
             // 
-            this.progressBar.Location = new System.Drawing.Point(6, 123);
+            this.progressBar.Location = new System.Drawing.Point(6, 16);
             this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(253, 23);
+            this.progressBar.Size = new System.Drawing.Size(138, 15);
             this.progressBar.TabIndex = 3;
             this.progressBar.Click += new System.EventHandler(this.progressBar_Click);
             // 
             // btnSendData
             // 
-            this.btnSendData.Location = new System.Drawing.Point(6, 19);
+            this.btnSendData.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnSendData.Location = new System.Drawing.Point(259, 0);
             this.btnSendData.Name = "btnSendData";
-            this.btnSendData.Size = new System.Drawing.Size(84, 26);
+            this.btnSendData.Size = new System.Drawing.Size(78, 21);
             this.btnSendData.TabIndex = 4;
             this.btnSendData.Text = "Отправить";
             this.btnSendData.UseVisualStyleBackColor = true;
@@ -292,10 +274,10 @@ namespace Serial_port
             // textBox1
             // 
             this.textBox1.BackColor = System.Drawing.SystemColors.Window;
-            this.textBox1.Location = new System.Drawing.Point(6, 21);
-            this.textBox1.Multiline = true;
+            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox1.Location = new System.Drawing.Point(0, 0);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(263, 129);
+            this.textBox1.Size = new System.Drawing.Size(259, 20);
             this.textBox1.TabIndex = 5;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
@@ -303,55 +285,23 @@ namespace Serial_port
             // 
             this.serial_port1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serial_port1_DataReceived);
             // 
-            // gBoxStatus
-            // 
-            this.gBoxStatus.Controls.Add(this.lStatusConnect);
-            this.gBoxStatus.Location = new System.Drawing.Point(139, 19);
-            this.gBoxStatus.Name = "gBoxStatus";
-            this.gBoxStatus.Size = new System.Drawing.Size(120, 86);
-            this.gBoxStatus.TabIndex = 6;
-            this.gBoxStatus.TabStop = false;
-            this.gBoxStatus.Text = "Статус соединения";
-            // 
             // lStatusConnect
             // 
             this.lStatusConnect.AutoSize = true;
-            this.lStatusConnect.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lStatusConnect.Location = new System.Drawing.Point(35, 33);
+            this.lStatusConnect.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lStatusConnect.Location = new System.Drawing.Point(200, 16);
             this.lStatusConnect.Name = "lStatusConnect";
-            this.lStatusConnect.Size = new System.Drawing.Size(58, 24);
+            this.lStatusConnect.Size = new System.Drawing.Size(38, 13);
             this.lStatusConnect.TabIndex = 0;
             this.lStatusConnect.Text = "Выкл";
-            // 
-            // gBoxTransmitter
-            // 
-            this.gBoxTransmitter.Controls.Add(this.groupBox3);
-            this.gBoxTransmitter.Controls.Add(this.groupBox2);
-            this.gBoxTransmitter.Controls.Add(this.textBox1);
-            this.gBoxTransmitter.Location = new System.Drawing.Point(286, 28);
-            this.gBoxTransmitter.Name = "gBoxTransmitter";
-            this.gBoxTransmitter.Size = new System.Drawing.Size(280, 313);
-            this.gBoxTransmitter.TabIndex = 7;
-            this.gBoxTransmitter.TabStop = false;
-            this.gBoxTransmitter.Text = "Запись";
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.labNumLength);
-            this.groupBox3.Controls.Add(this.labLengthData);
-            this.groupBox3.Location = new System.Drawing.Point(12, 244);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(250, 44);
-            this.groupBox3.TabIndex = 7;
-            this.groupBox3.TabStop = false;
             // 
             // labNumLength
             // 
             this.labNumLength.AutoSize = true;
-            this.labNumLength.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labNumLength.Location = new System.Drawing.Point(173, 19);
+            this.labNumLength.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labNumLength.Location = new System.Drawing.Point(137, 16);
             this.labNumLength.Name = "labNumLength";
-            this.labNumLength.Size = new System.Drawing.Size(24, 16);
+            this.labNumLength.Size = new System.Drawing.Size(21, 13);
             this.labNumLength.TabIndex = 1;
             this.labNumLength.Text = "00";
             this.labNumLength.Click += new System.EventHandler(this.labNumLength_Click);
@@ -359,140 +309,222 @@ namespace Serial_port
             // labLengthData
             // 
             this.labLengthData.AutoSize = true;
-            this.labLengthData.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labLengthData.Location = new System.Drawing.Point(6, 19);
+            this.labLengthData.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labLengthData.Location = new System.Drawing.Point(6, 16);
             this.labLengthData.Name = "labLengthData";
-            this.labLengthData.Size = new System.Drawing.Size(167, 16);
+            this.labLengthData.Size = new System.Drawing.Size(134, 13);
             this.labLengthData.TabIndex = 0;
             this.labLengthData.Text = "Размер входных данных:";
+            this.labLengthData.Click += new System.EventHandler(this.labLengthData_Click);
             // 
-            // groupBox2
+            // tBoxReciver
             // 
-            this.groupBox2.Controls.Add(this.gBoxWrite);
-            this.groupBox2.Controls.Add(this.gBoxButEnt);
-            this.groupBox2.Controls.Add(this.btnClear);
-            this.groupBox2.Controls.Add(this.btnSendData);
-            this.groupBox2.Location = new System.Drawing.Point(6, 156);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(263, 82);
-            this.groupBox2.TabIndex = 6;
-            this.groupBox2.TabStop = false;
+            this.tBoxReciver.BackColor = System.Drawing.SystemColors.Window;
+            this.tBoxReciver.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tBoxReciver.Location = new System.Drawing.Point(3, 40);
+            this.tBoxReciver.Multiline = true;
+            this.tBoxReciver.Name = "tBoxReciver";
+            this.tBoxReciver.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.tBoxReciver.Size = new System.Drawing.Size(337, 107);
+            this.tBoxReciver.TabIndex = 8;
+            this.tBoxReciver.TextChanged += new System.EventHandler(this.tBoxReciver_TextChanged);
             // 
-            // gBoxWrite
+            // menuStrip1
             // 
-            this.gBoxWrite.Controls.Add(this.cBoxWriteLine);
-            this.gBoxWrite.Controls.Add(this.cBoxWrite);
-            this.gBoxWrite.Location = new System.Drawing.Point(176, 15);
-            this.gBoxWrite.Name = "gBoxWrite";
-            this.gBoxWrite.Size = new System.Drawing.Size(81, 59);
-            this.gBoxWrite.TabIndex = 11;
-            this.gBoxWrite.TabStop = false;
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.файлToolStripMenuItem,
+            this.cOMToolStripMenuItem,
+            this.получениеToolStripMenuItem,
+            this.получениеToolStripMenuItem1,
+            this.оПрограммеToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(646, 24);
+            this.menuStrip1.TabIndex = 10;
+            this.menuStrip1.Text = "menuStrip1";
             // 
-            // cBoxWriteLine
+            // файлToolStripMenuItem
             // 
-            this.cBoxWriteLine.AutoSize = true;
-            this.cBoxWriteLine.Location = new System.Drawing.Point(6, 10);
-            this.cBoxWriteLine.Name = "cBoxWriteLine";
-            this.cBoxWriteLine.Size = new System.Drawing.Size(74, 17);
-            this.cBoxWriteLine.TabIndex = 8;
-            this.cBoxWriteLine.Text = "Write Line";
-            this.cBoxWriteLine.UseVisualStyleBackColor = true;
-            this.cBoxWriteLine.CheckedChanged += new System.EventHandler(this.cBoxWriteLine_CheckedChanged);
+            this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.выходToolStripMenuItem});
+            this.файлToolStripMenuItem.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
+            this.файлToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
+            this.файлToolStripMenuItem.Text = "Файл";
             // 
-            // cBoxWrite
+            // выходToolStripMenuItem
             // 
-            this.cBoxWrite.AutoSize = true;
-            this.cBoxWrite.Location = new System.Drawing.Point(6, 36);
-            this.cBoxWrite.Name = "cBoxWrite";
-            this.cBoxWrite.Size = new System.Drawing.Size(51, 17);
-            this.cBoxWrite.TabIndex = 9;
-            this.cBoxWrite.Text = "Write";
-            this.cBoxWrite.UseVisualStyleBackColor = true;
-            this.cBoxWrite.CheckedChanged += new System.EventHandler(this.cBoxWrite_CheckedChanged);
+            this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
+            this.выходToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.выходToolStripMenuItem.Text = "Выход";
+            this.выходToolStripMenuItem.Click += new System.EventHandler(this.выходToolStripMenuItem_Click);
             // 
-            // gBoxButEnt
+            // cOMToolStripMenuItem
             // 
-            this.gBoxButEnt.Controls.Add(this.cBoxUsingButton);
-            this.gBoxButEnt.Controls.Add(this.cBoxUsingEnter);
-            this.gBoxButEnt.Location = new System.Drawing.Point(98, 15);
-            this.gBoxButEnt.Name = "gBoxButEnt";
-            this.gBoxButEnt.Size = new System.Drawing.Size(72, 59);
-            this.gBoxButEnt.TabIndex = 10;
-            this.gBoxButEnt.TabStop = false;
+            this.cOMToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.открытьToolStripMenuItem,
+            this.закрытьToolStripMenuItem});
+            this.cOMToolStripMenuItem.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cOMToolStripMenuItem.Name = "cOMToolStripMenuItem";
+            this.cOMToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
+            this.cOMToolStripMenuItem.Text = "COM";
             // 
-            // cBoxUsingButton
+            // открытьToolStripMenuItem
             // 
-            this.cBoxUsingButton.AutoSize = true;
-            this.cBoxUsingButton.Location = new System.Drawing.Point(6, 10);
-            this.cBoxUsingButton.Name = "cBoxUsingButton";
-            this.cBoxUsingButton.Size = new System.Drawing.Size(57, 17);
-            this.cBoxUsingButton.TabIndex = 6;
-            this.cBoxUsingButton.Text = "Button";
-            this.cBoxUsingButton.UseVisualStyleBackColor = true;
-            this.cBoxUsingButton.CheckedChanged += new System.EventHandler(this.cBoxUsingButton_CheckedChanged);
+            this.открытьToolStripMenuItem.Name = "открытьToolStripMenuItem";
+            this.открытьToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.открытьToolStripMenuItem.Text = "Открыть";
+            this.открытьToolStripMenuItem.Click += new System.EventHandler(this.открытьToolStripMenuItem_Click);
             // 
-            // cBoxUsingEnter
+            // закрытьToolStripMenuItem
             // 
-            this.cBoxUsingEnter.AutoSize = true;
-            this.cBoxUsingEnter.Location = new System.Drawing.Point(6, 36);
-            this.cBoxUsingEnter.Name = "cBoxUsingEnter";
-            this.cBoxUsingEnter.Size = new System.Drawing.Size(51, 17);
-            this.cBoxUsingEnter.TabIndex = 7;
-            this.cBoxUsingEnter.Text = "Enter";
-            this.cBoxUsingEnter.UseVisualStyleBackColor = true;
-            this.cBoxUsingEnter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cBoxUsingEnter_KeyDown_1);
+            this.закрытьToolStripMenuItem.Name = "закрытьToolStripMenuItem";
+            this.закрытьToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.закрытьToolStripMenuItem.Text = "Закрыть";
+            this.закрытьToolStripMenuItem.Click += new System.EventHandler(this.закрытьToolStripMenuItem_Click);
             // 
-            // btnClear
+            // получениеToolStripMenuItem
             // 
-            this.btnClear.Location = new System.Drawing.Point(6, 51);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(84, 23);
-            this.btnClear.TabIndex = 5;
-            this.btnClear.Text = "Очистить";
-            this.btnClear.UseVisualStyleBackColor = true;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            this.получениеToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.отправитьToolStripMenuItem,
+            this.очиститьToolStripMenuItem,
+            this.строкаToolStripMenuItem});
+            this.получениеToolStripMenuItem.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.получениеToolStripMenuItem.Name = "получениеToolStripMenuItem";
+            this.получениеToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.получениеToolStripMenuItem.Text = "Запись";
+            this.получениеToolStripMenuItem.Click += new System.EventHandler(this.получениеToolStripMenuItem_Click);
             // 
-            // gBoxConnect
+            // отправитьToolStripMenuItem
             // 
-            this.gBoxConnect.Controls.Add(this.button1);
-            this.gBoxConnect.Controls.Add(this.btnClose);
-            this.gBoxConnect.Controls.Add(this.gBoxStatus);
-            this.gBoxConnect.Controls.Add(this.progressBar);
-            this.gBoxConnect.Location = new System.Drawing.Point(12, 236);
-            this.gBoxConnect.Name = "gBoxConnect";
-            this.gBoxConnect.Size = new System.Drawing.Size(268, 157);
-            this.gBoxConnect.TabIndex = 8;
-            this.gBoxConnect.TabStop = false;
+            this.отправитьToolStripMenuItem.Name = "отправитьToolStripMenuItem";
+            this.отправитьToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.отправитьToolStripMenuItem.Text = "Отправить";
             // 
-            // groupBox4
+            // очиститьToolStripMenuItem
             // 
-            this.groupBox4.Controls.Add(this.groupBox6);
-            this.groupBox4.Controls.Add(this.groupBox5);
-            this.groupBox4.Controls.Add(this.tBoxReciver);
-            this.groupBox4.Location = new System.Drawing.Point(577, 28);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(280, 313);
-            this.groupBox4.TabIndex = 9;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Чтение";
+            this.очиститьToolStripMenuItem.Name = "очиститьToolStripMenuItem";
+            this.очиститьToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.очиститьToolStripMenuItem.Text = "Очистить";
+            this.очиститьToolStripMenuItem.Click += new System.EventHandler(this.очиститьToolStripMenuItem_Click);
+            // 
+            // строкаToolStripMenuItem
+            // 
+            this.строкаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripComboBox2});
+            this.строкаToolStripMenuItem.Name = "строкаToolStripMenuItem";
+            this.строкаToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.строкаToolStripMenuItem.Text = "Строка";
+            // 
+            // toolStripComboBox2
+            // 
+            this.toolStripComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.toolStripComboBox2.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.toolStripComboBox2.Items.AddRange(new object[] {
+            "Нет",
+            "Две",
+            "Новая строка",
+            "Возврат каретки"});
+            this.toolStripComboBox2.Name = "toolStripComboBox2";
+            this.toolStripComboBox2.Size = new System.Drawing.Size(121, 21);
+            this.toolStripComboBox2.DropDownClosed += new System.EventHandler(this.toolStripComboBox2_DropDownClosed);
+            // 
+            // получениеToolStripMenuItem1
+            // 
+            this.получениеToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.данныеToolStripMenuItem,
+            this.очиститьToolStripMenuItem1,
+            this.позицияToolStripMenuItem});
+            this.получениеToolStripMenuItem1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.получениеToolStripMenuItem1.Name = "получениеToolStripMenuItem1";
+            this.получениеToolStripMenuItem1.Size = new System.Drawing.Size(83, 20);
+            this.получениеToolStripMenuItem1.Text = "Получение";
+            // 
+            // данныеToolStripMenuItem
+            // 
+            this.данныеToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripComboBox1});
+            this.данныеToolStripMenuItem.Name = "данныеToolStripMenuItem";
+            this.данныеToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.данныеToolStripMenuItem.Text = "Данные";
+            this.данныеToolStripMenuItem.Click += new System.EventHandler(this.данныеToolStripMenuItem_Click);
+            // 
+            // toolStripComboBox1
+            // 
+            this.toolStripComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.toolStripComboBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.toolStripComboBox1.Items.AddRange(new object[] {
+            "Update",
+            "Add to old Dist"});
+            this.toolStripComboBox1.Name = "toolStripComboBox1";
+            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 21);
+            this.toolStripComboBox1.Click += new System.EventHandler(this.toolStripComboBox1_Click);
+            // 
+            // очиститьToolStripMenuItem1
+            // 
+            this.очиститьToolStripMenuItem1.Name = "очиститьToolStripMenuItem1";
+            this.очиститьToolStripMenuItem1.Size = new System.Drawing.Size(131, 22);
+            this.очиститьToolStripMenuItem1.Text = "Очистить";
+            this.очиститьToolStripMenuItem1.Click += new System.EventHandler(this.очиститьToolStripMenuItem1_Click);
+            // 
+            // позицияToolStripMenuItem
+            // 
+            this.позицияToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripComboBox3});
+            this.позицияToolStripMenuItem.Name = "позицияToolStripMenuItem";
+            this.позицияToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.позицияToolStripMenuItem.Text = "Вывод";
+            // 
+            // toolStripComboBox3
+            // 
+            this.toolStripComboBox3.BackColor = System.Drawing.SystemColors.Window;
+            this.toolStripComboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.toolStripComboBox3.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.toolStripComboBox3.Items.AddRange(new object[] {
+            "В начале",
+            "В конце"});
+            this.toolStripComboBox3.Name = "toolStripComboBox3";
+            this.toolStripComboBox3.Size = new System.Drawing.Size(121, 21);
+            this.toolStripComboBox3.Click += new System.EventHandler(this.toolStripComboBox3_Click);
+            // 
+            // оПрограммеToolStripMenuItem
+            // 
+            this.оПрограммеToolStripMenuItem.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
+            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(96, 20);
+            this.оПрограммеToolStripMenuItem.Text = "О программе";
+            this.оПрограммеToolStripMenuItem.Click += new System.EventHandler(this.оПрограммеToolStripMenuItem_Click);
+            // 
+            // gBoxDisplay
+            // 
+            this.gBoxDisplay.Controls.Add(this.panel1);
+            this.gBoxDisplay.Controls.Add(this.tBoxReciver);
+            this.gBoxDisplay.Location = new System.Drawing.Point(300, 3);
+            this.gBoxDisplay.Name = "gBoxDisplay";
+            this.gBoxDisplay.Size = new System.Drawing.Size(343, 150);
+            this.gBoxDisplay.TabIndex = 11;
+            this.gBoxDisplay.TabStop = false;
+            this.gBoxDisplay.Text = "Дисплей";
             // 
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.lvalLengthOUTdata);
+            this.groupBox6.Controls.Add(this.labLengthData);
             this.groupBox6.Controls.Add(this.lLengthOUTdata);
-            this.groupBox6.Location = new System.Drawing.Point(12, 244);
+            this.groupBox6.Controls.Add(this.labNumLength);
+            this.groupBox6.Location = new System.Drawing.Point(300, 3);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(250, 44);
+            this.groupBox6.Size = new System.Drawing.Size(343, 37);
             this.groupBox6.TabIndex = 8;
             this.groupBox6.TabStop = false;
             // 
             // lvalLengthOUTdata
             // 
             this.lvalLengthOUTdata.AutoSize = true;
-            this.lvalLengthOUTdata.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lvalLengthOUTdata.Location = new System.Drawing.Point(187, 18);
+            this.lvalLengthOUTdata.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lvalLengthOUTdata.Location = new System.Drawing.Point(302, 16);
             this.lvalLengthOUTdata.Name = "lvalLengthOUTdata";
-            this.lvalLengthOUTdata.Size = new System.Drawing.Size(24, 16);
+            this.lvalLengthOUTdata.Size = new System.Drawing.Size(21, 13);
             this.lvalLengthOUTdata.TabIndex = 1;
             this.lvalLengthOUTdata.Text = "00";
             this.lvalLengthOUTdata.Click += new System.EventHandler(this.lvalLengthOUTdata_Click);
@@ -500,109 +532,96 @@ namespace Serial_port
             // lLengthOUTdata
             // 
             this.lLengthOUTdata.AutoSize = true;
-            this.lLengthOUTdata.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lLengthOUTdata.Location = new System.Drawing.Point(15, 18);
+            this.lLengthOUTdata.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lLengthOUTdata.Location = new System.Drawing.Point(164, 16);
             this.lLengthOUTdata.Name = "lLengthOUTdata";
-            this.lLengthOUTdata.Size = new System.Drawing.Size(176, 16);
+            this.lLengthOUTdata.Size = new System.Drawing.Size(142, 13);
             this.lLengthOUTdata.TabIndex = 0;
             this.lLengthOUTdata.Text = "Размер выходных данных:";
             // 
-            // groupBox5
+            // MainPanel
             // 
-            this.groupBox5.Controls.Add(this.groupBox7);
-            this.groupBox5.Controls.Add(this.btnClearOutData);
-            this.groupBox5.Location = new System.Drawing.Point(6, 156);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(263, 82);
-            this.groupBox5.TabIndex = 12;
-            this.groupBox5.TabStop = false;
+            this.MainPanel.Controls.Add(this.ButtonPanel);
+            this.MainPanel.Controls.Add(this.groupBox1);
+            this.MainPanel.Controls.Add(this.gBoxDisplay);
+            this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MainPanel.Location = new System.Drawing.Point(0, 24);
+            this.MainPanel.Name = "MainPanel";
+            this.MainPanel.Size = new System.Drawing.Size(646, 196);
+            this.MainPanel.TabIndex = 12;
+            this.MainPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.MainPanel_Paint);
             // 
-            // groupBox7
+            // ButtonPanel
             // 
-            this.groupBox7.Controls.Add(this.cBoxUpdate);
-            this.groupBox7.Controls.Add(this.cBoxAddtoOldDist);
-            this.groupBox7.Location = new System.Drawing.Point(125, 15);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(107, 59);
-            this.groupBox7.TabIndex = 10;
-            this.groupBox7.TabStop = false;
+            this.ButtonPanel.Controls.Add(this.groupBox2);
+            this.ButtonPanel.Controls.Add(this.groupBox6);
+            this.ButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.ButtonPanel.Location = new System.Drawing.Point(0, 152);
+            this.ButtonPanel.Name = "ButtonPanel";
+            this.ButtonPanel.Size = new System.Drawing.Size(646, 44);
+            this.ButtonPanel.TabIndex = 12;
             // 
-            // cBoxUpdate
+            // label6
             // 
-            this.cBoxUpdate.AutoSize = true;
-            this.cBoxUpdate.Location = new System.Drawing.Point(6, 10);
-            this.cBoxUpdate.Name = "cBoxUpdate";
-            this.cBoxUpdate.Size = new System.Drawing.Size(61, 17);
-            this.cBoxUpdate.TabIndex = 6;
-            this.cBoxUpdate.Text = "Update";
-            this.cBoxUpdate.UseVisualStyleBackColor = true;
-            this.cBoxUpdate.CheckedChanged += new System.EventHandler(this.cBoxUpdate_CheckedChanged);
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(150, 16);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(44, 13);
+            this.label6.TabIndex = 4;
+            this.label6.Text = "Cтатус:";
             // 
-            // cBoxAddtoOldDist
+            // groupBox2
             // 
-            this.cBoxAddtoOldDist.AutoSize = true;
-            this.cBoxAddtoOldDist.Location = new System.Drawing.Point(6, 36);
-            this.cBoxAddtoOldDist.Name = "cBoxAddtoOldDist";
-            this.cBoxAddtoOldDist.Size = new System.Drawing.Size(95, 17);
-            this.cBoxAddtoOldDist.TabIndex = 7;
-            this.cBoxAddtoOldDist.Text = "Add to old Dist";
-            this.cBoxAddtoOldDist.UseVisualStyleBackColor = true;
-            this.cBoxAddtoOldDist.CheckedChanged += new System.EventHandler(this.cBoxAddtoOldDist_CheckedChanged);
+            this.groupBox2.Controls.Add(this.progressBar);
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.lStatusConnect);
+            this.groupBox2.Location = new System.Drawing.Point(3, 3);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(286, 37);
+            this.groupBox2.TabIndex = 9;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Соединение";
             // 
-            // btnClearOutData
+            // panel1
             // 
-            this.btnClearOutData.Location = new System.Drawing.Point(35, 19);
-            this.btnClearOutData.Name = "btnClearOutData";
-            this.btnClearOutData.Size = new System.Drawing.Size(84, 55);
-            this.btnClearOutData.TabIndex = 5;
-            this.btnClearOutData.Text = "Очистить";
-            this.btnClearOutData.UseVisualStyleBackColor = true;
-            this.btnClearOutData.Click += new System.EventHandler(this.btnClearOutData_Click);
-            // 
-            // tBoxReciver
-            // 
-            this.tBoxReciver.BackColor = System.Drawing.SystemColors.Window;
-            this.tBoxReciver.Location = new System.Drawing.Point(6, 21);
-            this.tBoxReciver.Multiline = true;
-            this.tBoxReciver.Name = "tBoxReciver";
-            this.tBoxReciver.Size = new System.Drawing.Size(263, 129);
-            this.tBoxReciver.TabIndex = 8;
-            this.tBoxReciver.TextChanged += new System.EventHandler(this.tBoxReciver_TextChanged);
+            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.btnSendData);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(3, 16);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(337, 21);
+            this.panel1.TabIndex = 13;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(874, 407);
-            this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.gBoxConnect);
-            this.Controls.Add(this.gBoxTransmitter);
-            this.Controls.Add(this.groupBox1);
+            this.ClientSize = new System.Drawing.Size(646, 220);
+            this.Controls.Add(this.MainPanel);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
+            this.MaximumSize = new System.Drawing.Size(966, 606);
+            this.MinimumSize = new System.Drawing.Size(654, 247);
             this.Name = "Form1";
             this.Text = "C# COM SERIAL PORT";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.Resize += new System.EventHandler(this.Form1_Resize);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.gBoxStatus.ResumeLayout(false);
-            this.gBoxStatus.PerformLayout();
-            this.gBoxTransmitter.ResumeLayout(false);
-            this.gBoxTransmitter.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.gBoxWrite.ResumeLayout(false);
-            this.gBoxWrite.PerformLayout();
-            this.gBoxButEnt.ResumeLayout(false);
-            this.gBoxButEnt.PerformLayout();
-            this.gBoxConnect.ResumeLayout(false);
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
+            this.gBoxDisplay.ResumeLayout(false);
+            this.gBoxDisplay.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
+            this.MainPanel.ResumeLayout(false);
+            this.ButtonPanel.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -619,39 +638,43 @@ namespace Serial_port
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.Button btnSendData;
         private System.Windows.Forms.TextBox textBox1;
         private System.IO.Ports.SerialPort serial_port1;
         private System.Windows.Forms.CheckBox cBoxRTS;
         private System.Windows.Forms.CheckBox cBoxDTR;
-        private System.Windows.Forms.GroupBox gBoxStatus;
         private System.Windows.Forms.Label lStatusConnect;
-        private System.Windows.Forms.GroupBox gBoxTransmitter;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.GroupBox gBoxConnect;
-        private System.Windows.Forms.Button btnClear;
-        private System.Windows.Forms.CheckBox cBoxWrite;
-        private System.Windows.Forms.CheckBox cBoxWriteLine;
-        private System.Windows.Forms.CheckBox cBoxUsingEnter;
-        private System.Windows.Forms.CheckBox cBoxUsingButton;
-        private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label labLengthData;
         private System.Windows.Forms.Label labNumLength;
-        private System.Windows.Forms.GroupBox gBoxWrite;
-        private System.Windows.Forms.GroupBox gBoxButEnt;
-        private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.TextBox tBoxReciver;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.CheckBox cBoxUpdate;
-        private System.Windows.Forms.CheckBox cBoxAddtoOldDist;
-        private System.Windows.Forms.Button btnClearOutData;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cOMToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem открытьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem закрытьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem получениеToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem строкаToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem получениеToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem данныеToolStripMenuItem;
+        private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
+        private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem;
+        private System.Windows.Forms.ToolStripComboBox toolStripComboBox2;
+        private System.Windows.Forms.ToolStripMenuItem отправитьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem очиститьToolStripMenuItem;
+        private System.Windows.Forms.GroupBox gBoxDisplay;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Label lvalLengthOUTdata;
         private System.Windows.Forms.Label lLengthOUTdata;
+        private System.Windows.Forms.ToolStripMenuItem очиститьToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem позицияToolStripMenuItem;
+        private System.Windows.Forms.ToolStripComboBox toolStripComboBox3;
+        private System.Windows.Forms.Panel MainPanel;
+        private System.Windows.Forms.Panel ButtonPanel;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 

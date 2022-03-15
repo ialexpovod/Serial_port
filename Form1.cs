@@ -13,13 +13,13 @@ using System.IO.Ports;
 namespace Serial_port
 {
     public partial class Form1 : Form
-    {   
+    {
         string dataOUT;
         string SendWrite;
         string dataIN;
         public Form1()
         {
-           System.Threading.Thread.CurrentThread.CurrentUICulture = System.Globalization.CultureInfo.GetCultureInfo("ru-RU");
+            System.Threading.Thread.CurrentThread.CurrentUICulture = System.Globalization.CultureInfo.GetCultureInfo("ru-RU");
             InitializeComponent();
         }
         private void Form1_Load(object sender, EventArgs e)
@@ -27,29 +27,20 @@ namespace Serial_port
             string[] ports = SerialPort.GetPortNames();
             cBoxComPort.Items.AddRange(ports);
 
-            button1.Enabled = true;
-            btnClose.Enabled = false;
-
-
-
-
             cBoxDTR.Checked = false;
             serial_port1.DtrEnable = false;
-            
-            
             cBoxRTS.Checked = false;
             serial_port1.RtsEnable = false;
             // Формат записи
-            cBoxWrite.Checked = true;
-            cBoxWriteLine.Checked = false;
-            SendWrite = "Write";
+            SendWrite = "Нет";
+            toolStripComboBox3.Text = "В конце";
 
-            cBoxUpdate.Checked = false;
-            cBoxAddtoOldDist.Checked = true;
+            toolStripComboBox1.Text = "Add to old Dist";
+            toolStripComboBox2.Text = "Нет";
         }
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-         
+
 
         }
 
@@ -68,12 +59,11 @@ namespace Serial_port
 
         }
 
-      
-        private void button1_Click(object sender, EventArgs e)
+        private void открытьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           try
+            try
             {
-                
+
                 serial_port1.PortName = cBoxComPort.Text;
                 serial_port1.BaudRate = Convert.ToInt32(cBoxBaundRate.Text);
                 serial_port1.DataBits = Convert.ToInt32(cBoxDataBits.Text);
@@ -83,38 +73,34 @@ namespace Serial_port
 
                 serial_port1.Open();
                 progressBar.Value = 100;
-                button1.Enabled = false;
-                btnClose.Enabled = true;
                 lStatusConnect.Text = "Вкл";
 
             }
             catch (Exception err)
             {
                 MessageBox.Show(err.Message, "Ошибка подключения", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                button1.Enabled = true;
-                btnClose.Enabled = false;
                 lStatusConnect.Text = "Выкл";
             }
-            }
-           
+        }
 
 
         private void label6_Click(object sender, EventArgs e)
         {
 
         }
-
-        private void btnClose_Click(object sender, EventArgs e)
+        private void закрытьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(serial_port1.IsOpen)
+            if (serial_port1.IsOpen)
             {
                 serial_port1.Close();
                 progressBar.Value = 0;
-                button1.Enabled = true;
-                btnClose.Enabled = false;
                 lStatusConnect.Text = "Выкл";
 
             }
+        }
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void cBoxParity_SelectedIndexChanged(object sender, EventArgs e)
@@ -124,23 +110,53 @@ namespace Serial_port
 
         private void btnSendData_Click(object sender, EventArgs e)
         {
-            if(serial_port1.IsOpen)
+            if (serial_port1.IsOpen)
             {
                 dataOUT = textBox1.Text;
-                if(SendWrite == "Write Line")
-                {
-                    serial_port1.WriteLine(dataOUT);
-                }
-
-                else if (SendWrite == "Write")
+                if (SendWrite == "Нет")
                 {
                     serial_port1.Write(dataOUT);
+                }
+
+                else if (SendWrite == "Две")
+                {
+                    serial_port1.Write(dataOUT + "\r\n");
+                }
+                else if (SendWrite == "Новая строка")
+                {
+                    serial_port1.Write(dataOUT + "\n");
+                }
+                else if (SendWrite == "Возврат каретки")
+                {
+                    serial_port1.Write(dataOUT + "\r");
                 }
             }
 
         }
+        private void toolStripComboBox2_DropDownClosed(object sender, EventArgs e)
+        {
+            // Нет
+            // Две
+            // Новая строка
+            // Возврат каретки
+            if (toolStripComboBox2.Text == "Нет")
+            {
+                SendWrite = "Нет";
+            }
+            else if (toolStripComboBox2.Text == "Две")
+            {
+                SendWrite = "Две";
+            }
+            else if (toolStripComboBox2.Text == "Новая строка")
+            {
+                SendWrite = "Новая строка";
+            }
+            else if (toolStripComboBox2.Text == "Возврат каретки")
+            {
+                SendWrite = "Возврат каретки";
+            }
+        }
 
-      
         private void progressBar_Click(object sender, EventArgs e)
         {
 
@@ -172,24 +188,27 @@ namespace Serial_port
                 serial_port1.RtsEnable = false;
             }
         }
-
-        private void btnClear_Click(object sender, EventArgs e)
+        private void очиститьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(btnClear.Text != "")
+            if (textBox1.Text != "")
             {
                 textBox1.Text = "";
             }
+        }
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+
         }
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             int dataOUTLength = textBox1.TextLength;
             labNumLength.Text = string.Format("{0:0}", dataOUTLength);
-            if (cBoxUsingEnter.Checked)
+            /*if (cBoxUsingEnter.Checked)
             {
                 textBox1.Text = textBox1.Text.Replace(Environment.NewLine, "");
-            }
+            }*/
         }
-
+        /*
         private void cBoxUsingButton_CheckedChanged(object sender, EventArgs e)
         {
             if (cBoxUsingButton.Checked)
@@ -199,49 +218,44 @@ namespace Serial_port
             }
             else { btnSendData.Enabled = false; }
         }
+        */
 
-   
-        private void cBoxWriteLine_CheckedChanged(object sender, EventArgs e)
+        private void textBox1_KeyDown(object sender, KeyEventArgs e)
         {
-            if (cBoxWriteLine.Checked)
+            if (e.KeyCode == Keys.Enter)
             {
-                SendWrite = "Write Line";
-                cBoxWrite.Checked = false;
-                cBoxWriteLine.Checked = true;
-
+                this.doSomeThing();
+                e.Handled = true;
+                e.SuppressKeyPress = true;
             }
+
         }
 
-        private void cBoxWrite_CheckedChanged(object sender, EventArgs e)
+        private void doSomeThing()
         {
-            if (cBoxWrite.Checked)
+            if (serial_port1.IsOpen)
             {
-                SendWrite = "Write";
-                cBoxWrite.Checked = true;
-                cBoxWriteLine.Checked = false;
-            }
-        }
-
-        private void cBoxUsingEnter_KeyDown_1(object sender, KeyEventArgs e)
-        {
-            if (cBoxUsingEnter.Checked)
-            {
-                if (e.KeyCode == Keys.Enter)
+                dataOUT = textBox1.Text;
+                if (SendWrite == "Нет")
                 {
-                    if (serial_port1.IsOpen)
-                        if (SendWrite == "Write Line")
-                        {
-                            serial_port1.WriteLine(dataOUT);
-                        }
+                    serial_port1.Write(dataOUT);
+                }
 
-                        else if (SendWrite == "Write")
-                        {
-                            serial_port1.Write(dataOUT);
-                        }
-
+                else if (SendWrite == "Две")
+                {
+                    serial_port1.Write(dataOUT + "\r\n");
+                }
+                else if (SendWrite == "Новая строка")
+                {
+                    serial_port1.Write(dataOUT + "\n");
+                }
+                else if (SendWrite == "Возврат каретки")
+                {
+                    serial_port1.Write(dataOUT + "\r");
                 }
             }
         }
+
         private void serial_port1_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             dataIN = serial_port1.ReadExisting();
@@ -252,13 +266,23 @@ namespace Serial_port
         {
             int dataInLength = tBoxReciver.TextLength;
             lvalLengthOUTdata.Text = string.Format("{0:0}", dataInLength);
-            if (cBoxUpdate.Checked)
+            if (toolStripComboBox1.Text == "Update")
             {
                 tBoxReciver.Text = dataIN;
             }
-            else if (cBoxAddtoOldDist.Checked)
+            else if (toolStripComboBox1.Text == "Add to old Dist")
+            {
+                if(toolStripComboBox3.Text == "В начале")
                 {
-                tBoxReciver.Text += dataIN;
+                    // Зеркальный (обратный) вывод
+                    tBoxReciver.Text = tBoxReciver.Text.Insert(0, dataIN);
+                }
+                else if (toolStripComboBox3.Text == "В конце")
+                {
+                    tBoxReciver.Text += dataIN;
+                }
+                
+                
             }
         }
 
@@ -268,37 +292,16 @@ namespace Serial_port
 
         }
 
-        private void cBoxUpdate_CheckedChanged(object sender, EventArgs e)
+        private void очиститьToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            if (cBoxUpdate.Checked)
-            {
-                cBoxUpdate.Checked = true;
-                cBoxAddtoOldDist.Checked = false;
-            }
-            else {
-                cBoxAddtoOldDist.Checked = true;
-            }
-        }
-
-        private void cBoxAddtoOldDist_CheckedChanged(object sender, EventArgs e)
-        {
-            if (cBoxAddtoOldDist.Checked)
-            {
-                cBoxUpdate.Checked = false;
-                cBoxAddtoOldDist.Checked = true;
-            }
-            else
-            {
-                cBoxUpdate.Checked = true;
-            }
-        }
-
-        private void btnClearOutData_Click(object sender, EventArgs e)
-        {
-            if(tBoxReciver.Text != "")
+            if (tBoxReciver.Text != "")
             {
                 tBoxReciver.Text = "";
             }
+        }
+        private void btnClearOutData_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void lvalLengthOUTdata_Click(object sender, EventArgs e)
@@ -310,5 +313,60 @@ namespace Serial_port
         {
 
         }
+
+        private void нетToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void получениеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labLengthData_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void данныеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripComboBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void оПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Create by Alex Povod", "Creator", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void toolStripComboBox3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void выходToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void MainPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Form1_Resize(object sender, EventArgs e)
+        {
+            gBoxDisplay.Width = MainPanel.Width - 303;
+            gBoxDisplay.Height = MainPanel.Height - 46;
+
+            tBoxReciver.Height = MainPanel.Height - 89;
+        }
     }
+
 }
+
