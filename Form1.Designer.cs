@@ -53,6 +53,11 @@ namespace Serial_port
             this.tBoxReciver = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.сохранитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripComboBox_AppendorOverwrite = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStripComboBox_WriteLineOverwriteText = new System.Windows.Forms.ToolStripComboBox();
+            this.saveToMySQL = new System.Windows.Forms.ToolStripMenuItem();
+            this.showToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cOMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.открытьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -70,22 +75,22 @@ namespace Serial_port
             this.toolStripComboBox3 = new System.Windows.Forms.ToolStripComboBox();
             this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gBoxDisplay = new System.Windows.Forms.GroupBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.lvalLengthOUTdata = new System.Windows.Forms.Label();
             this.lLengthOUTdata = new System.Windows.Forms.Label();
             this.MainPanel = new System.Windows.Forms.Panel();
             this.ButtonPanel = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.gBoxDisplay.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.MainPanel.SuspendLayout();
             this.ButtonPanel.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -321,11 +326,11 @@ namespace Serial_port
             // 
             this.tBoxReciver.BackColor = System.Drawing.SystemColors.Window;
             this.tBoxReciver.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tBoxReciver.Location = new System.Drawing.Point(3, 40);
+            this.tBoxReciver.Location = new System.Drawing.Point(3, 42);
             this.tBoxReciver.Multiline = true;
             this.tBoxReciver.Name = "tBoxReciver";
             this.tBoxReciver.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tBoxReciver.Size = new System.Drawing.Size(337, 107);
+            this.tBoxReciver.Size = new System.Drawing.Size(337, 157);
             this.tBoxReciver.TabIndex = 8;
             this.tBoxReciver.TextChanged += new System.EventHandler(this.tBoxReciver_TextChanged);
             // 
@@ -339,23 +344,78 @@ namespace Serial_port
             this.оПрограммеToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(646, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(650, 24);
             this.menuStrip1.TabIndex = 10;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // файлToolStripMenuItem
             // 
             this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.сохранитьToolStripMenuItem,
+            this.saveToMySQL,
             this.выходToolStripMenuItem});
             this.файлToolStripMenuItem.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
             this.файлToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
             this.файлToolStripMenuItem.Text = "Файл";
             // 
+            // сохранитьToolStripMenuItem
+            // 
+            this.сохранитьToolStripMenuItem.Checked = true;
+            this.сохранитьToolStripMenuItem.CheckOnClick = true;
+            this.сохранитьToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.сохранитьToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripComboBox_AppendorOverwrite,
+            this.toolStripComboBox_WriteLineOverwriteText});
+            this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
+            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.сохранитьToolStripMenuItem.Text = "Сохранить как txt";
+            this.сохранитьToolStripMenuItem.Click += new System.EventHandler(this.сохранитьToolStripMenuItem_Click);
+            // 
+            // toolStripComboBox_AppendorOverwrite
+            // 
+            this.toolStripComboBox_AppendorOverwrite.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.toolStripComboBox_AppendorOverwrite.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.toolStripComboBox_AppendorOverwrite.Items.AddRange(new object[] {
+            "Append",
+            "Overwrite"});
+            this.toolStripComboBox_AppendorOverwrite.Name = "toolStripComboBox_AppendorOverwrite";
+            this.toolStripComboBox_AppendorOverwrite.Size = new System.Drawing.Size(121, 21);
+            this.toolStripComboBox_AppendorOverwrite.DropDownClosed += new System.EventHandler(this.toolStripComboBox_AppendorOverwrite_DropDownClosed);
+            // 
+            // toolStripComboBox_WriteLineOverwriteText
+            // 
+            this.toolStripComboBox_WriteLineOverwriteText.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.toolStripComboBox_WriteLineOverwriteText.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.toolStripComboBox_WriteLineOverwriteText.Items.AddRange(new object[] {
+            "Write Line",
+            "Write"});
+            this.toolStripComboBox_WriteLineOverwriteText.Name = "toolStripComboBox_WriteLineOverwriteText";
+            this.toolStripComboBox_WriteLineOverwriteText.Size = new System.Drawing.Size(121, 21);
+            // 
+            // saveToMySQL
+            // 
+            this.saveToMySQL.Checked = true;
+            this.saveToMySQL.CheckOnClick = true;
+            this.saveToMySQL.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.saveToMySQL.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.showToolStripMenuItem});
+            this.saveToMySQL.Name = "saveToMySQL";
+            this.saveToMySQL.Size = new System.Drawing.Size(180, 22);
+            this.saveToMySQL.Text = "Save to MySQL";
+            this.saveToMySQL.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            // 
+            // showToolStripMenuItem
+            // 
+            this.showToolStripMenuItem.Name = "showToolStripMenuItem";
+            this.showToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.showToolStripMenuItem.Text = "Show";
+            this.showToolStripMenuItem.Click += new System.EventHandler(this.showToolStripMenuItem_Click);
+            // 
             // выходToolStripMenuItem
             // 
             this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            this.выходToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.выходToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.выходToolStripMenuItem.Text = "Выход";
             this.выходToolStripMenuItem.Click += new System.EventHandler(this.выходToolStripMenuItem_Click);
             // 
@@ -372,14 +432,14 @@ namespace Serial_port
             // открытьToolStripMenuItem
             // 
             this.открытьToolStripMenuItem.Name = "открытьToolStripMenuItem";
-            this.открытьToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.открытьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.открытьToolStripMenuItem.Text = "Открыть";
             this.открытьToolStripMenuItem.Click += new System.EventHandler(this.открытьToolStripMenuItem_Click);
             // 
             // закрытьToolStripMenuItem
             // 
             this.закрытьToolStripMenuItem.Name = "закрытьToolStripMenuItem";
-            this.закрытьToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.закрытьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.закрытьToolStripMenuItem.Text = "Закрыть";
             this.закрытьToolStripMenuItem.Click += new System.EventHandler(this.закрытьToolStripMenuItem_Click);
             // 
@@ -398,13 +458,13 @@ namespace Serial_port
             // отправитьToolStripMenuItem
             // 
             this.отправитьToolStripMenuItem.Name = "отправитьToolStripMenuItem";
-            this.отправитьToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.отправитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.отправитьToolStripMenuItem.Text = "Отправить";
             // 
             // очиститьToolStripMenuItem
             // 
             this.очиститьToolStripMenuItem.Name = "очиститьToolStripMenuItem";
-            this.очиститьToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.очиститьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.очиститьToolStripMenuItem.Text = "Очистить";
             this.очиститьToolStripMenuItem.Click += new System.EventHandler(this.очиститьToolStripMenuItem_Click);
             // 
@@ -413,7 +473,7 @@ namespace Serial_port
             this.строкаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripComboBox2});
             this.строкаToolStripMenuItem.Name = "строкаToolStripMenuItem";
-            this.строкаToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.строкаToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.строкаToolStripMenuItem.Text = "Строка";
             // 
             // toolStripComboBox2
@@ -501,10 +561,20 @@ namespace Serial_port
             this.gBoxDisplay.Controls.Add(this.tBoxReciver);
             this.gBoxDisplay.Location = new System.Drawing.Point(300, 3);
             this.gBoxDisplay.Name = "gBoxDisplay";
-            this.gBoxDisplay.Size = new System.Drawing.Size(343, 150);
+            this.gBoxDisplay.Size = new System.Drawing.Size(343, 202);
             this.gBoxDisplay.TabIndex = 11;
             this.gBoxDisplay.TabStop = false;
             this.gBoxDisplay.Text = "Дисплей";
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.btnSendData);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(3, 16);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(337, 21);
+            this.panel1.TabIndex = 13;
             // 
             // groupBox6
             // 
@@ -547,7 +617,7 @@ namespace Serial_port
             this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainPanel.Location = new System.Drawing.Point(0, 24);
             this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(646, 196);
+            this.MainPanel.Size = new System.Drawing.Size(650, 255);
             this.MainPanel.TabIndex = 12;
             this.MainPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.MainPanel_Paint);
             // 
@@ -556,19 +626,10 @@ namespace Serial_port
             this.ButtonPanel.Controls.Add(this.groupBox2);
             this.ButtonPanel.Controls.Add(this.groupBox6);
             this.ButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.ButtonPanel.Location = new System.Drawing.Point(0, 152);
+            this.ButtonPanel.Location = new System.Drawing.Point(0, 211);
             this.ButtonPanel.Name = "ButtonPanel";
-            this.ButtonPanel.Size = new System.Drawing.Size(646, 44);
+            this.ButtonPanel.Size = new System.Drawing.Size(650, 44);
             this.ButtonPanel.TabIndex = 12;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(150, 16);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(44, 13);
-            this.label6.TabIndex = 4;
-            this.label6.Text = "Cтатус:";
             // 
             // groupBox2
             // 
@@ -582,27 +643,27 @@ namespace Serial_port
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Соединение";
             // 
-            // panel1
+            // label6
             // 
-            this.panel1.Controls.Add(this.textBox1);
-            this.panel1.Controls.Add(this.btnSendData);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(3, 16);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(337, 21);
-            this.panel1.TabIndex = 13;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(150, 16);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(44, 13);
+            this.label6.TabIndex = 4;
+            this.label6.Text = "Cтатус:";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(646, 220);
+            this.ClientSize = new System.Drawing.Size(650, 279);
             this.Controls.Add(this.MainPanel);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.MaximumSize = new System.Drawing.Size(966, 606);
             this.MinimumSize = new System.Drawing.Size(654, 247);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "C# COM SERIAL PORT";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Resize += new System.EventHandler(this.Form1_Resize);
@@ -612,14 +673,14 @@ namespace Serial_port
             this.menuStrip1.PerformLayout();
             this.gBoxDisplay.ResumeLayout(false);
             this.gBoxDisplay.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.MainPanel.ResumeLayout(false);
             this.ButtonPanel.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -675,6 +736,11 @@ namespace Serial_port
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ToolStripMenuItem сохранитьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripComboBox toolStripComboBox_AppendorOverwrite;
+        private System.Windows.Forms.ToolStripComboBox toolStripComboBox_WriteLineOverwriteText;
+        private System.Windows.Forms.ToolStripMenuItem saveToMySQL;
+        private System.Windows.Forms.ToolStripMenuItem showToolStripMenuItem;
     }
 }
 

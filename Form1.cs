@@ -8,6 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO.Ports;
+using System.IO;
+// Connect MySQL reference
+using MySql.Data.MySqlClient;
+
+
 
 
 namespace Serial_port
@@ -17,6 +22,84 @@ namespace Serial_port
         string dataOUT;
         string SendWrite;
         string dataIN;
+
+        // Сохранение в txt
+        // Создать класс StreamWriter и заданной для него какой-то объект.
+        StreamWriter objStreamWriter;
+        // задекларировать переменную строкового типа данных для пути сохранения данных в файл.
+        // Для статического сохранения данных в текстовый файл
+        // string path_file = @"C:\Users\Efimenko_AD\source\repos\Serial_port\_Sorce_File_data\save_data.txt";
+        // Динамическое сохранение в текстовый файл
+        string path_file;
+
+        bool statement_append_text = true;
+
+        MySqlConnection MyNewMySQLconnection;
+        MySqlCommand MyNewMySQLcommand;
+
+
+        #region Anon_Method 
+
+        private void SaveDataToTxtFile()
+        {
+            if (сохранитьToolStripMenuItem.Checked)
+            {
+                try
+                {
+                    objStreamWriter = new StreamWriter(path_file, statement_append_text);
+                    if (toolStripComboBox_WriteLineOverwriteText.Text == "Write Line")
+                    {
+                        objStreamWriter.WriteLine(dataIN);
+                    }
+                    else if (toolStripComboBox_WriteLineOverwriteText.Text == "Write")
+                    {
+                        objStreamWriter.Write(dataIN + ";"); // or " ", "\n"
+                    }
+
+                    objStreamWriter.Close();
+                }
+                catch (Exception err)
+                {
+                    MessageBox.Show(err.Message);
+                }
+            }
+            
+        }
+
+        // MySQL
+        private void SaveDataToMySQL()
+        {
+            if (saveToMySQL.Checked)
+            {
+                try
+                {
+                    // Connect with database MySQL
+                    MyNewMySQLconnection = new MySqlConnection( "server=localhost; " +
+                                                                "username=root; " +
+                                                                "password=; " +
+                                                                "port=3306;" +
+                                                                "database=database_serial_port");
+                    MyNewMySQLconnection.Open();
+
+                    // Command for insert. `MyTABLE`, 'MyVALUES'.
+                    MyNewMySQLcommand = new MySqlCommand(string.Format("INSERT INTO `table_serial_port` VALUES('{0}')", dataIN), MyNewMySQLconnection);
+                    MyNewMySQLcommand.ExecuteNonQuery();
+
+                    MyNewMySQLconnection.Close();
+
+                }
+                catch (Exception err)
+                {
+                    MessageBox.Show(err.Message);
+                }
+
+            }
+        }
+
+
+        #endregion
+
+        #region GUI method
         public Form1()
         {
             System.Threading.Thread.CurrentThread.CurrentUICulture = System.Globalization.CultureInfo.GetCultureInfo("ru-RU");
@@ -32,11 +115,34 @@ namespace Serial_port
             cBoxRTS.Checked = false;
             serial_port1.RtsEnable = false;
             // Формат записи
-            SendWrite = "Нет";
-            toolStripComboBox3.Text = "В конце";
+            SendWrite = "Две";
+            toolStripComboBox3.Text = "В начале";
 
             toolStripComboBox1.Text = "Add to old Dist";
-            toolStripComboBox2.Text = "Нет";
+            toolStripComboBox2.Text = "Две";
+
+            // Append
+            // Overwrite
+            toolStripComboBox_AppendorOverwrite.Text = "Append";
+
+            // Write Line
+            // Write
+            toolStripComboBox_WriteLineOverwriteText.Text = "Write Line";
+
+            // Текущая директория проекта
+            path_file = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
+            // Добавить в переменную папку и название файла
+            path_file = path_file + @"\_Sorce_File_data\dynamic_path_for_save_data.txt";
+            // Вывести результат в консоли
+            Console.WriteLine("===== Result =====");
+            Console.WriteLine(path_file);
+            // C:\Users\Efimenko_AD\source\repos\Serial_port\_Sorce_File_data\
+
+            // Save to .txt Checked
+            сохранитьToolStripMenuItem.Checked = false;
+            // MySQL Save Checked
+            saveToMySQL.Checked = false;
+
         }
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -84,10 +190,6 @@ namespace Serial_port
         }
 
 
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
         private void закрытьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (serial_port1.IsOpen)
@@ -97,10 +199,6 @@ namespace Serial_port
                 lStatusConnect.Text = "Выкл";
 
             }
-        }
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void cBoxParity_SelectedIndexChanged(object sender, EventArgs e)
@@ -281,9 +379,11 @@ namespace Serial_port
                 {
                     tBoxReciver.Text += dataIN;
                 }
-                
-                
+ 
             }
+            SaveDataToTxtFile();
+            SaveDataToMySQL();
+
         }
 
 
@@ -366,6 +466,39 @@ namespace Serial_port
 
             tBoxReciver.Height = MainPanel.Height - 89;
         }
+
+        private void сохранитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripComboBox_AppendorOverwrite_DropDownClosed(object sender, EventArgs e)
+        {
+            if(toolStripComboBox_AppendorOverwrite.Text == "Append")
+            {
+                statement_append_text = true;
+            }
+            else
+            {
+                statement_append_text = false;
+            }
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void showToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form2 objForm2 = new Form2();
+            objForm2.Show();
+
+
+
+        }
+        #endregion
+
     }
 
 }
